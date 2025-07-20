@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FinanceHelper</title>
+</head>
+<body>
+    <h1>💰 FinanceHelper</h1>
+    <input type="text" id="question" placeholder="Ask about your spending...">
+    <button onclick="ask()">Ask</button>
+    <pre id="response"></pre>
+
+    <script>
+        async function ask() {
+            const q = document.getElementById("question").value;
+            const res = await fetch(`/ask?q=${encodeURIComponent(q)}`);
+            const data = await res.json();
+            document.getElementById("response").textContent = data.answer;
+        }
+    </script>
+</body>
+</html>
